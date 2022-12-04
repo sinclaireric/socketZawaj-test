@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import socketIOClient from 'socket.io-client'
 
 
-const io = socketIOClient("wss://apizawaj.onebaz.com",{ path:'/socket/v1/socketio/',transports: ['polling'], query: { token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlT2ZVc2VyIjoiYWRtaW4iLCJpZCI6IjYzNTkxMGVmOGFhZDA5N2RjNTI0YzlkNyIsImtleSI6ImtHc0E2ZDBvcGNXNWZHbmhFekV0QnhqdFd4ZGFpQWdUIiwiaWF0IjoxNjcwMDczMDMwLCJleHAiOjE2ODU2MjUwMzB9.JWaNRLCqIm6k4WYT9oiIzXuNqoWydb4webOGs7rtB9E"  } });
+const io = socketIOClient("wss://apizawaj.onebaz.com",{ path:'/socket/v1', query: { token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlT2ZVc2VyIjoibWVtYmVyIiwiaWQiOiI2MzU5Nzk5MDg0ZWUxZjIzZDJmNWE2YTMiLCJrZXkiOiJlZnltbGpBZUVKSndvYlJmaTlsN1EwdGtiQWhNbldvWiIsImlhdCI6MTY3MDE5NzkxNSwiZXhwIjoxNjg1NzQ5OTE1fQ.eN5uYx-oHGNAXE57mjdj-HgeJSDSmQhV7qOfdrNdYFc"  } });
 
 
 const userName = 'User '+parseInt(Math.random()*10)
@@ -13,8 +13,9 @@ function App() {
 
   useEffect(() => {
 
+    
 
-    io.on('admin/receive-message', payload => {
+    io.on('ok 2', payload => {
 
       console.log(payload); 
       //setModeration(setModeration(payload.status))
@@ -34,7 +35,7 @@ function App() {
   const sendMessage = (e) => {
     e.preventDefault();
     console.log(message)
-    io.emit('message',{userName,message})
+    io.emit('socketbateau2',{t:'toto'})
     setMessage('')
   };
   return (
